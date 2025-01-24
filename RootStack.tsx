@@ -22,7 +22,6 @@ export function RootStack({}: Props) {
         },
         headerShadowVisible: false,
         contentStyle: {
-          paddingBottom: 100000,
           paddingHorizontal: 16,
           backgroundColor: 'rgb(246, 245, 243)',
         },

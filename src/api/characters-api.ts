@@ -2,24 +2,18 @@ import axios from 'axios';
 const baseUrl = 'https://swapi.py4e.com/api';
 
 // Passing configuration object to axios
-export async function fetchCharacters(page = 1) {
-  console.log('fetch');
+export async function fetchCharacters(page = 1, controller?: AbortController) {
+  const url = `${baseUrl}/people?page=${page.toString()}`;
+  console.log({ url });
 
-  const params = new URLSearchParams();
-  params.append('page', '' + page);
-  const configurationObject = {
-    method: 'get',
-    url: `${baseUrl}/people`,
-    params,
-  };
-  try {
-
-    const response = await axios(configurationObject);
-    return response.data;
-  } catch (e) {
-    console.error('Could not fetch', e);
+  const res = await fetch(url, {
+    signal: controller?.signal,
+  });
+  if (!res.ok) {
+    throw new Error('Error while fetching characters');
   }
-};
+  return res.json();
+}
 export async function fetchCharacterById(id: string) {
   const configurationObject = {
     method: 'get',
@@ -27,4 +21,4 @@ export async function fetchCharacterById(id: string) {
   };
   const response = await axios(configurationObject);
   console.log(response.data);
-};
+}
