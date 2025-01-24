@@ -10,6 +10,7 @@ import {FanCountCard} from '../components/FanCountCard';
 import {fetchCharacters} from '../api/characters-api';
 import {AppText} from '../components/AppText';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {CharacterCard} from '../components/CharacterCard';
 
 type Props = {};
 
@@ -102,17 +103,11 @@ export function HomeScreen({}: Props) {
           style={styles.flatList}
           data={characters}
           renderItem={({item}) => (
-            <View
-              style={[
-                styles.listItem,
-                Platform.OS === 'ios' && styles.roundedBorder,
-              ]}>
-              <AppText>{item.name}</AppText>
-            </View>
+            <CharacterCard key={item.url} name={item.name} uri={item.url} />
           )}
           onEndReached={handleEndReached}
           onEndReachedThreshold={0.5}
-          keyExtractor={item => item.name} // or another unique key
+          keyExtractor={item => item.name}
         />
       )}
     </SafeAreaView>
