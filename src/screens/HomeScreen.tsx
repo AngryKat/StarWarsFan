@@ -5,24 +5,36 @@ import {fetchCharacters} from '../api/characters-api';
 import {AppText} from '../components/AppText';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {CharacterCard} from '../components/CharacterCard';
-import {Character} from '../types';
+import {Character, Gender} from '../types';
 
 type Props = {};
 
-const cards = [
+type CardItem = {
+  title: string;
+  count: number;
+  gender: Gender;
+};
+
+const cards: CardItem[] = [
   {
     title: 'Female Fans',
+    gender: 'female',
     count: 0,
   },
   {
     title: 'Male Fans',
+    gender: 'male',
     count: 0,
   },
   {
     title: 'Other Fans',
+    gender: 'other',
     count: 0,
   },
 ];
+
+const itemHeight = 130;
+const itemMargin = 8;
 
 export function HomeScreen({}: Props) {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -66,8 +78,8 @@ export function HomeScreen({}: Props) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardRow}>
-        {cards.map(({title, count}) => (
-          <FanCountCard key={title} title={title} count={count} />
+        {cards.map(({title, gender}) => (
+          <FanCountCard key={title} title={title} gender={gender} />
         ))}
       </View>
       {error && <AppText>{'Error :('}</AppText>}
@@ -78,12 +90,27 @@ export function HomeScreen({}: Props) {
           showsVerticalScrollIndicator={false}
           style={styles.flatList}
           data={characters}
-          renderItem={({item}) => (
-            <CharacterCard key={item.url} name={item.name} uri={item.url} />
-          )}
+          renderItem={({item}) => {
+            const gender: Gender = ['n/a', 'unknown', 'none'].includes(
+              item.gender,
+            )
+              ? 'other'
+              : (item.gender.toLocaleLowerCase() as Gender);
+            return (
+              <CharacterCard
+                key={item.url}
+                name={item.name}
+                url={item.url}
+                gender={gender}
+              />
+            );
+          }}
           onEndReached={handleEndReached}
           onEndReachedThreshold={0.5}
           keyExtractor={item => item.name}
+          snapToInterval={itemHeight + itemMargin * 2}
+          snapToAlignment="start"
+          decelerationRate="fast"
         />
       )}
     </SafeAreaView>
@@ -93,6 +120,7 @@ export function HomeScreen({}: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginHorizontal: -24,
   },
   cardRow: {
     flexDirection: 'row',
@@ -102,6 +130,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   flatList: {
+    paddingHorizontal: 24,
     flex: 1, // This makes sure FlatList fills available space and scrolls
   },
   flatListContent: {
@@ -111,7 +140,7 @@ const styles = StyleSheet.create({
   listItem: {
     padding: 24,
     backgroundColor: 'white',
-    marginVertical: 8,
+    marginVertical: itemMargin,
   },
   roundedBorder: {
     borderRadius: 16,

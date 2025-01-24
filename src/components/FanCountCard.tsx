@@ -1,14 +1,18 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 import {AppText} from './AppText';
 import {AppCard} from './AppCard';
+import {Gender} from '../types';
+import {useSelector} from 'react-redux';
+import {selectFansCount} from '../store/fansSlice';
 
 type Props = {
-  count: number;
+  gender: Gender;
   title: string;
 };
 
-export function FanCountCard({count, title}: Props) {
+export function FanCountCard({title, gender}: Props) {
+  const count = useSelector(selectFansCount(gender));
   return (
     <AppCard style={styles.container}>
       <AppText style={styles.count}>{count}</AppText>
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
     flexShrink: 1,
     flexGrow: 1,
     padding: 15,
-    borderRadius: 4,
+    borderRadius: Platform.OS === 'ios' ? 8 : 4,
   },
   count: {
     fontSize: 32,

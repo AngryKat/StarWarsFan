@@ -7,7 +7,7 @@ export type Character = {
   name: string;
   birth_year: string;
   eye_color: string | 'unknown' | 'n/a';
-  gender: 'Male' | 'Female' | 'unknown' | 'n/a';
+  gender: 'Male' | 'Female' | 'unknown' | 'n/a' | 'none';
   hair_color: string;
   height: string;
   mass: string;
@@ -21,3 +21,6 @@ export type Character = {
   created: string;
   edited: string;
 };
+
+export type Gender = 'female' | 'male' | 'other';
+

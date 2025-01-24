@@ -1,41 +1,38 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {type NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../types';
+import type {Gender} from '../types';
 import {LikeButton} from './LikeButton';
 import {AppText} from './AppText';
 import {AppButton} from './AppButton';
 import {AppCard} from './AppCard';
+import {useTypedNavigation} from '../hooks';
 
 type Props = {
   name: string;
-  uri: string;
+  url: string;
+  gender: Gender;
 };
-type ProfileScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'Details'
->;
 
-export function CharacterCard({name, uri}: Props) {
-  const navigation = useNavigation<ProfileScreenNavigationProp>();
-
-  const [isLiked, setIsLiked] = useState(false);
+export function CharacterCard({name, gender, url}: Props) {
+  const navigation = useTypedNavigation<'Details'>();
   return (
     <AppCard>
       <View style={styles.container}>
-        <AppText style={styles.name}>{name}</AppText>
+        <View>
+          <AppText style={styles.title}>{name}</AppText>
+          <AppText style={styles.subtitle}>{gender}</AppText>
+        </View>
         <LikeButton
-          onPress={() => setIsLiked(liked => !liked)}
-          isLiked={isLiked}
           accessibilityLabel={`Add ${name} to favorites`}
+          gender={gender}
+          characterUrl={url}
         />
       </View>
       <AppButton
         accessibilityLabel={`View full information for ${name}`}
         onPress={() =>
           navigation.navigate('Details', {
-            characterUrl: uri,
+            characterUrl: url,
           })
         }>
         View
@@ -50,7 +47,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  name: {
+  title: {
+    fontSize: 18,
+  },
+  subtitle: {
     fontSize: 16,
+    color: '#989898',
   },
 });

@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
-import {Character, RootStackParamList} from '../types';
+import {Character, Gender, RootStackParamList} from '../types';
 import {fetchCharacter} from '../api/characters-api';
 import {AppText} from '../components/AppText';
 import {AppCard} from '../components/AppCard';
+import {LikeButton} from '../components/LikeButton';
 
 type Props = {
   route: RouteProp<RootStackParamList, 'Details'>;
 };
 
 const skipFields: Array<keyof Character> = [
+  'name',
   'edited',
   'url',
   'homeworld',
@@ -26,6 +28,11 @@ export function DetailsScreen({route}: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const {characterUrl} = route.params;
+  const gender: Gender = ['n/a', 'unknown', 'none'].includes(
+    character?.gender ?? 'unknown',
+  )
+    ? 'other'
+    : (character?.gender.toLocaleLowerCase() as Gender);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -49,6 +56,16 @@ export function DetailsScreen({route}: Props) {
   }, [characterUrl]);
   return (
     <AppCard style={styles.container}>
+      {character && (
+        <View style={styles.headerContainer}>
+          <AppText style={styles.headerTitle}>{character.name}</AppText>
+          <LikeButton
+            accessibilityLabel={`Add to favorites ${character?.name}`}
+            gender={gender}
+            characterUrl={character.url}
+          />
+        </View>
+      )}
       {error && <AppText>{'Error :('}</AppText>}
       {isLoading ? (
         <ActivityIndicator />
@@ -85,5 +102,13 @@ const styles = StyleSheet.create({
   },
   dataItemText: {
     textTransform: 'capitalize',
+  },
+  headerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  headerTitle: {
+    fontSize: 18,
   },
 });

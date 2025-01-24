@@ -2,13 +2,12 @@ import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen, DetailsScreen} from './src/screens';
 import fonts from './src/config/fonts';
-import {AppButton} from './src/components/AppButton';
 import {RootStackParamList} from './src/types';
+import {ClearButton} from './src/components/ClearButton';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function RootStack() {
-  const renderHeaderRight = () => <AppButton>Clear fans</AppButton>;
   return (
     <Stack.Navigator
       screenOptions={{
@@ -30,7 +29,7 @@ export function RootStack() {
         name="Home"
         component={HomeScreen}
         options={{
-          headerRight: renderHeaderRight,
+          headerRight: ClearButton,
           title: 'Fans',
         }}
       />
