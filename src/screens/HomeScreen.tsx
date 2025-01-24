@@ -1,16 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  Platform,
-  StyleSheet,
-  View,
-} from 'react-native';
+import {ActivityIndicator, FlatList, StyleSheet, View} from 'react-native';
 import {FanCountCard} from '../components/FanCountCard';
 import {fetchCharacters} from '../api/characters-api';
 import {AppText} from '../components/AppText';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {CharacterCard} from '../components/CharacterCard';
+import {Character} from '../types';
 
 type Props = {};
 
@@ -28,25 +23,6 @@ const cards = [
     count: 0,
   },
 ];
-
-type Character = {
-  name: string;
-  birth_year: string;
-  eye_color: string | 'unknown' | 'n/a';
-  gender: 'Male' | 'Female' | 'unknown' | 'n/a';
-  hair_color: string;
-  height: string;
-  mass: string;
-  skin_color: string;
-  homeworld: string;
-  films: string[];
-  species: string[];
-  starships: string[];
-  vehicles: string[];
-  url: string;
-  created: string;
-  edited: string;
-};
 
 export function HomeScreen({}: Props) {
   const [characters, setCharacters] = useState<Character[]>([]);

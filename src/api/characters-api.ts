@@ -14,11 +14,14 @@ export async function fetchCharacters(page = 1, controller?: AbortController) {
   }
   return res.json();
 }
-export async function fetchCharacterById(id: string) {
-  const configurationObject = {
-    method: 'get',
-    url: `${baseUrl}/people/${id}`,
-  };
-  const response = await axios(configurationObject);
-  console.log(response.data);
+export async function fetchCharacter(url: string, controller: AbortController) {
+  console.log({ url });
+
+  const res = await fetch(url, {
+    signal: controller?.signal,
+  });
+  if (!res.ok) {
+    throw new Error('Error while fetching fetchCharacter');
+  }
+  return res.json();
 }

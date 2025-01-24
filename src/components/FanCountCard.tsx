@@ -1,6 +1,7 @@
 import React from 'react';
-import {Platform, StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {AppText} from './AppText';
+import {AppCard} from './AppCard';
 
 type Props = {
   count: number;
@@ -9,17 +10,15 @@ type Props = {
 
 export function FanCountCard({count, title}: Props) {
   return (
-    <View
-      style={[styles.container, Platform.OS === 'ios' && styles.roundedBorder]}>
+    <AppCard style={styles.container}>
       <AppText style={styles.count}>{count}</AppText>
       <AppText style={styles.title}>{title}</AppText>
-    </View>
+    </AppCard>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
     flexBasis: 0,
     flexShrink: 1,
     flexGrow: 1,

@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {Platform, StyleSheet, View} from 'react-native';
-import {LikeButton} from './LikeButton';
-import {AppText} from './AppText';
-import {AppButton} from './AppButton';
+import {StyleSheet, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {type NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../types';
+import {LikeButton} from './LikeButton';
+import {AppText} from './AppText';
+import {AppButton} from './AppButton';
+import {AppCard} from './AppCard';
 
 type Props = {
   name: string;
@@ -21,7 +22,7 @@ export function CharacterCard({name, uri}: Props) {
 
   const [isLiked, setIsLiked] = useState(false);
   return (
-    <View style={styles.wrapper}>
+    <AppCard>
       <View style={styles.container}>
         <AppText style={styles.name}>{name}</AppText>
         <LikeButton
@@ -39,18 +40,11 @@ export function CharacterCard({name, uri}: Props) {
         }>
         View
       </AppButton>
-    </View>
+    </AppCard>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    gap: 12,
-    padding: 24,
-    backgroundColor: 'white',
-    marginVertical: 8,
-    borderRadius: Platform.OS === 'ios' ? 16 : 0,
-  },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
