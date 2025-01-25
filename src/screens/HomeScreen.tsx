@@ -33,14 +33,13 @@ const cards: CardItem[] = [
   },
 ];
 
-const itemHeight = 130;
 const itemMargin = 8;
 
 export function HomeScreen({}: Props) {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false); // Loading state
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1); // For pagination
+  const [page, setPage] = useState<number>(1);
   useEffect(() => {
     const abortController = new AbortController();
     const loadCharacters = async () => {
@@ -108,9 +107,6 @@ export function HomeScreen({}: Props) {
           onEndReached={handleEndReached}
           onEndReachedThreshold={0.5}
           keyExtractor={item => item.name}
-          snapToInterval={itemHeight + itemMargin * 2}
-          snapToAlignment="start"
-          decelerationRate="fast"
         />
       )}
     </SafeAreaView>
@@ -131,7 +127,6 @@ const styles = StyleSheet.create({
   },
   flatList: {
     paddingHorizontal: 24,
-    flex: 1, // This makes sure FlatList fills available space and scrolls
   },
   flatListContent: {
     paddingTop: 24,
