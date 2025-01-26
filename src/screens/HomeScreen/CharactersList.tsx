@@ -2,7 +2,7 @@ import React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 
 import type {Gender} from '../../types';
-import {useCharacters} from '../../api/characters-api-hooks';
+import {useCharacters} from '../../api/characters';
 import {AppText} from '../../ui';
 import {CharacterCard} from './CharacterCard';
 
@@ -39,5 +39,5 @@ export function CharactersList() {
 
 const styles = StyleSheet.create({
   // add this padding so last item is visible
-  contentContainer: {paddingBottom: 150},
+  contentContainer: {paddingBottom: 170},
 });
