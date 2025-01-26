@@ -1,12 +1,16 @@
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, StyleProp, StyleSheet, ViewStyle} from 'react-native';
 
 import type {Gender} from '../../types';
 import {useCharacters} from '../../api/characters';
 import {AppText} from '../../ui';
 import {CharacterCard} from './CharacterCard';
 
-export function CharactersList() {
+type Props = {
+  style?: StyleProp<ViewStyle>;
+};
+
+export function CharactersList({style}: Props) {
   const {characters, isError, loadMore} = useCharacters();
   if (isError) {
     return <AppText>{'Error :('}</AppText>;
@@ -29,7 +33,7 @@ export function CharactersList() {
           />
         );
       }}
-      contentContainerStyle={styles.contentContainer}
+      contentContainerStyle={[styles.contentContainer, style]}
       onEndReached={loadMore}
       onEndReachedThreshold={0.5}
       keyExtractor={item => item.name}

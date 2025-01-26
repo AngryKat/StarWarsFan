@@ -38,9 +38,9 @@ export function HomeScreen() {
           <FanCountCard key={title} title={title} gender={gender} />
         ))}
       </View>
-      <View style={styles.listContainer}>
+      <View>
         <Suspense fallback={<ActivityIndicator />}>
-          <CharactersList />
+          <CharactersList style={styles.listContainer} />
         </Suspense>
       </View>
     </SafeAreaView>
