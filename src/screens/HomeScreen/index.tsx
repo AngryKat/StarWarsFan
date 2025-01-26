@@ -34,8 +34,8 @@ export function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardRow}>
-        {cards.map(({title, gender}) => (
-          <FanCountCard key={title} title={title} gender={gender} />
+        {cards.map(({title, gender}, index) => (
+          <FanCountCard key={index} title={title} gender={gender} />
         ))}
       </View>
       <View>
