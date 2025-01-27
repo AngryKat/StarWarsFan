@@ -1,7 +1,7 @@
 # Getting Started
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
-## Step 1: Start Metro
+## Step 1: Install dependencies
 
 To install ```node_modules```, run the following command from the root of the cloned project:
 
