@@ -37,8 +37,16 @@ For iOS, remember to install CocoaPods dependencies.
 pod install
 ```
 
+
 Then run
 
 ```sh
 npm run ios
 ```
+
+## Sneak peek
+<p>
+<img src="https://github.com/AngryKat/StarWarsFan/blob/main/sneak-peek-images/sneak-peek_ios.png" height="650" alt="The iPhone screen with the app running on it. The horizontal list with three cards with counts for favourite characters by gender: Male, Female, Other. Below these cards there is a list of cards with star wars characters. On each card there are character's name, their gender and a like button. At the bottom of the card there is a View button"/>
+<img src="https://github.com/AngryKat/StarWarsFan/blob/main/sneak-peek-images/sneak-peek_android.png" height="650" alt="The Google Pixel screen with the app running on it. The horizontal list with three cards with counts for favourite characters by gender: Male, Female, Other. Below these cards there is a list of cards with star wars characters. On each card there are character's name, their gender and a like button. At the bottom of the card there is a View button"/>
+</p>
+
