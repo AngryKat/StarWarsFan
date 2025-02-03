@@ -1,4 +1,4 @@
-import { store } from '../store';
+import { store } from '@/store';
 
 export type RootStackParamList = {
   Details: { characterUrl: string };

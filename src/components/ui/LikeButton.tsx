@@ -12,8 +12,8 @@ import {
   decrementLikes,
   incrementLikes,
   selectIsCharacterLiked,
-} from '../../store/fansSlice';
-import {type Gender} from '../../utils/types';
+} from '@/store/fansSlice';
+import {type Gender} from '@/utils/types';
 
 type Props = {
   accessibilityLabel: string;

@@ -1,13 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {AppText, LikeButton} from '../../../components/ui';
-import {
-  ApiGender,
-  Character,
-  Gender,
-  isVagueGender,
-} from '../../../utils/types';
-import {useCharacter} from '../../../api/characters';
+import {AppText, LikeButton} from '@/components/ui';
+import {ApiGender, Character, Gender, isVagueGender} from '@/utils/types';
+import {useCharacter} from '@/api/characters';
 
 const skipFields: Array<keyof Character> = [
   'name',

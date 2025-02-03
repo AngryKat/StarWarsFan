@@ -1,5 +1,7 @@
-export { AppButton } from './AppButton.tsx';
-export { AppCard } from './AppCard.tsx';
-export { AppText } from './AppText.tsx';
-export { ClearButton } from './ClearButton.tsx';
-export { LikeButton } from './LikeButton.tsx';
+import { AppButton } from './AppButton';
+import { AppCard } from './AppCard';
+import { AppText } from './AppText';
+import { ClearButton } from './ClearButton';
+import { LikeButton } from './LikeButton';
+
+export { AppButton, AppCard, AppText, ClearButton, LikeButton };

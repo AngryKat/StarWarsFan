@@ -1,6 +1,6 @@
 import useSWRInfinite from 'swr/infinite';
-import { fetcher } from '../fetcher';
-import { type CharacterApiData } from '../../utils/types';
+import { fetcher } from '@/api/fetcher';
+import { type CharacterApiData } from '@/utils/types';
 
 export function useCharacters() {
   const getKey = (pageIndex: number, previousPageData: CharacterApiData) => {

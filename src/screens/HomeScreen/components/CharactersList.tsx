@@ -7,9 +7,9 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import {Character, type Gender} from '../../../utils/types';
-import {useCharacters} from '../../../api/characters';
-import {AppText} from '../../../components/ui';
+import {Character, type Gender} from '@/utils/types';
+import {useCharacters} from '@/api/characters';
+import {AppText} from '@/components/ui';
 import {CharacterCard} from './CharacterCard';
 
 const renderItem = ({item}: ListRenderItemInfo<Character>) => {

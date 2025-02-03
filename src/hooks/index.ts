@@ -1,1 +1,4 @@
-export { useTypedNavigation } from './useTypedNavigation';
+import { useTypedNavigation } from './useTypedNavigation';
+
+export { useTypedNavigation };
+

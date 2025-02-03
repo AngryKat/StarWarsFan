@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import {type Gender} from '../../../utils/types';
-import {AppButton, AppCard, AppText, LikeButton} from '../../../components/ui';
-import {useTypedNavigation} from '../../../hooks';
+import {type Gender} from '@/utils/types';
+import {AppButton, AppCard, AppText, LikeButton} from '@/components/ui';
+import {useTypedNavigation} from '@/hooks';
 
 type Props = {
   name: string;

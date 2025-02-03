@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-import type {Gender} from '../../utils/types';
+import type {Gender} from '@/utils/types';
 import {FanCountCard} from './components/FanCountCard';
 import {CharactersList} from './components/CharactersList';
 

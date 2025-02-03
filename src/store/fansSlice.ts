@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { type PayloadAction } from '@reduxjs/toolkit';
-import { type Gender, type FansState, type RootState } from '../utils/types';
+import { type Gender, type FansState, type RootState } from '@/utils/types';
 
 const initialState: FansState = {
   female: { count: 0, characterUrls: {} },

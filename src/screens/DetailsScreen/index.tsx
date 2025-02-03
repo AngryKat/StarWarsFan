@@ -1,8 +1,8 @@
 import React, {Suspense} from 'react';
 import {ActivityIndicator, StyleSheet} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
-import {type RootStackParamList} from '../../utils/types';
-import {AppCard} from '../../components/ui';
+import {type RootStackParamList} from '@/utils/types';
+import {AppCard} from '@/components/ui';
 import {CharacterDetails} from './components/CharacterDetails';
 
 type Props = {
