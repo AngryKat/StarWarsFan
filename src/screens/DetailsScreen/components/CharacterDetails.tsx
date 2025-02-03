@@ -71,9 +71,6 @@ export function CharacterDetails({characterUrl}: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    gap: 8,
-  },
   dataItem: {
     flexDirection: 'row',
   },
