@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { Character } from '../../types';
+import { Character } from '../../utils/types';
 import { fetcher } from '../fetcher';
 
 export function useCharacter(characterUrl: string) {

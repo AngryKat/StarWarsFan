@@ -1,15 +1,15 @@
 import useSWRInfinite from 'swr/infinite';
 import { fetcher } from '../fetcher';
-import { Data } from './types';
+import { type CharacterApiData } from '../../utils/types';
 
 export function useCharacters() {
-  const getKey = (pageIndex: number, previousPageData: Data) => {
+  const getKey = (pageIndex: number, previousPageData: CharacterApiData) => {
     if (pageIndex === 0) {
       return 'https://swapi.py4e.com/api/people?page=1';
     }
     return previousPageData.next;
   };
-  const { data, error, size, setSize } = useSWRInfinite<Data>(getKey, fetcher, {
+  const { data, error, size, setSize } = useSWRInfinite<CharacterApiData>(getKey, fetcher, {
     suspense: true,
   });
 

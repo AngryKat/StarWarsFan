@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import type {Character, Gender, RootStackParamList} from '../types';
-import {useCharacter} from '../api/characters';
+import {useCharacter} from '../../api/characters';
 import {AppCard, AppText, LikeButton} from '../ui';
 
 type Props = {

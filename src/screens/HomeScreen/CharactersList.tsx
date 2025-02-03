@@ -1,10 +1,30 @@
 import React from 'react';
-import {FlatList, StyleProp, StyleSheet, ViewStyle} from 'react-native';
+import {
+  FlatList,
+  ListRenderItemInfo,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+} from 'react-native';
 
-import type {Gender} from '../../types';
+import {Character, type Gender} from '../../utils/types';
 import {useCharacters} from '../../api/characters';
-import {AppText} from '../../ui';
+import {AppText} from '../../components/ui';
 import {CharacterCard} from './CharacterCard';
+
+const renderItem = ({item}: ListRenderItemInfo<Character>) => {
+  const gender: Gender = ['n/a', 'unknown', 'none'].includes(item.gender)
+    ? 'other'
+    : (item.gender.toLocaleLowerCase() as Gender);
+  return (
+    <CharacterCard
+      key={item.url}
+      name={item.name}
+      url={item.url}
+      gender={gender}
+    />
+  );
+};
 
 type Props = {
   style?: StyleProp<ViewStyle>;
@@ -18,25 +38,13 @@ export function CharactersList({style}: Props) {
 
   return (
     <FlatList
-      showsVerticalScrollIndicator={false}
-      data={characters}
-      renderItem={({item}) => {
-        const gender: Gender = ['n/a', 'unknown', 'none'].includes(item.gender)
-          ? 'other'
-          : (item.gender.toLocaleLowerCase() as Gender);
-        return (
-          <CharacterCard
-            key={item.url}
-            name={item.name}
-            url={item.url}
-            gender={gender}
-          />
-        );
-      }}
       contentContainerStyle={[styles.contentContainer, style]}
+      data={characters}
+      keyExtractor={item => item.name}
       onEndReached={loadMore}
       onEndReachedThreshold={0.5}
-      keyExtractor={item => item.name}
+      renderItem={renderItem}
+      showsVerticalScrollIndicator={false}
     />
   );
 }

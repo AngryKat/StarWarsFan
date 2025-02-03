@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 
-import type {Gender} from '../../types';
-import {AppButton, AppCard, AppText, LikeButton} from '../../ui';
+import {type Gender, routeNames} from '../../utils/types';
+import {AppButton, AppCard, AppText, LikeButton} from '../../components/ui';
 import {useTypedNavigation} from '../../hooks';
 
 type Props = {
@@ -29,7 +29,7 @@ export function CharacterCard({name, gender, url}: Props) {
       <AppButton
         accessibilityLabel={`View full information for ${name}`}
         onPress={() =>
-          navigation.navigate('Details', {
+          navigation.navigate(routeNames.details, {
             characterUrl: url,
           })
         }>

@@ -3,8 +3,8 @@ import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 import type {Gender} from '../../types';
-import {FanCountCard} from './FanCountCard';
-import {CharactersList} from './CharactersList';
+import {FanCountCard} from './HomeScreen/FanCountCard';
+import {CharactersList} from './HomeScreen/CharactersList';
 
 type CardItem = {
   title: string;
