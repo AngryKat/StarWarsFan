@@ -1,8 +1,9 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {AppText, LikeButton} from '@/components/ui';
-import {ApiGender, Character, Gender, isVagueGender} from '@/utils/types';
+import {ApiGender, Character, Gender, isDefinedGender} from '@/utils/types';
 import {useCharacter} from '@/api/characters';
+import {getGenderLabel} from '@/helpers';
 
 const skipFields: Array<keyof Character> = [
   'name',
@@ -14,14 +15,8 @@ const skipFields: Array<keyof Character> = [
   'species',
   'films',
   'created',
+  'gender',
 ];
-
-const getGender = (apiGender: ApiGender) => {
-  if (isVagueGender(apiGender)) {
-    return 'other';
-  }
-  return apiGender.toLocaleLowerCase() as Gender;
-};
 
 const getDataItemKeyLabel = (key: string) => {
   return key.split('_').join(' ');
@@ -33,7 +28,7 @@ type Props = {
 
 export function CharacterDetails({characterUrl}: Props) {
   const {character, isError} = useCharacter(characterUrl);
-  const gender: Gender = character ? getGender(character.gender) : 'other';
+  const gender: Gender = getGenderLabel(character!.gender);
 
   if (isError) {
     return <AppText>{'Error :('}</AppText>;
@@ -41,14 +36,14 @@ export function CharacterDetails({characterUrl}: Props) {
   return (
     <>
       <View style={styles.headerContainer}>
-        <AppText style={styles.headerTitle}>{character?.name}</AppText>
+        <AppText style={styles.headerTitle}>{character!.name}</AppText>
         <LikeButton
-          accessibilityLabel={`Add to favorites ${character?.name}`}
+          accessibilityLabel={`Add to favorites ${character!.name}`}
           gender={gender}
-          characterUrl={character?.url ?? ''}
+          characterUrl={character!.url}
         />
       </View>
-      {Object.entries(character ?? {}).map(([key, value]) => {
+      {Object.entries(character!).map(([key, value]) => {
         if (skipFields.includes(key as keyof Character)) {
           return null;
         }
@@ -61,6 +56,12 @@ export function CharacterDetails({characterUrl}: Props) {
           </View>
         );
       })}
+      <View style={styles.dataItem} key={'gender'}>
+        <AppText style={[styles.dataItemKeyText, styles.dataItemText]}>
+          Gender:
+        </AppText>
+        <AppText style={styles.dataItemText}>{gender}</AppText>
+      </View>
     </>
   );
 }

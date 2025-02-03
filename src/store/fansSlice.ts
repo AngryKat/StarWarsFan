@@ -34,8 +34,10 @@ export const fansSlice = createSlice({
 
 export const { reset, decrementLikes, incrementLikes } = fansSlice.actions;
 
-export const selectFansCount = (gender: Gender) => (state: RootState) =>
-  state.fans[gender].count;
+export const selectFansCount = (gender: Gender) => (state: RootState) => {
+  console.log({ state });
+  return state.fans[gender].count;
+}
 export const selectIsCharacterLiked =
   (gender: Gender, characterUrl: string) => (state: RootState) =>
     !!state.fans[gender]?.characterUrls[characterUrl];

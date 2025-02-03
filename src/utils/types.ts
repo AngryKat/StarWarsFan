@@ -7,10 +7,10 @@ export type RootStackParamList = {
 
 export type CharacterApiData = { results: Character[]; next: string | null };
 
-export type ApiGender = 'Male' | 'Female' | 'unknown' | 'n/a' | 'none';
-export type VagueGender = Exclude<ApiGender, 'Male' | 'Female'>;
-export const isVagueGender = (x: ApiGender): x is VagueGender => {
-  return x !== 'Female' && x !== 'Male';
+export type ApiGender = 'male' | 'female' | 'unknown' | 'n/a' | 'none';
+export type DefinedGender = Extract<ApiGender, 'male' | 'female'>;
+export const isDefinedGender = (x: ApiGender): x is DefinedGender => {
+  return x === 'female' || x === 'male';
 };
 
 type EyeColor = string | 'unknown' | 'n/a';

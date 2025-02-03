@@ -7,15 +7,19 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import {Character, type Gender} from '@/utils/types';
+import {
+  ApiGender,
+  Character,
+  isDefinedGender,
+  type Gender,
+} from '@/utils/types';
 import {useCharacters} from '@/api/characters';
 import {AppText} from '@/components/ui';
 import {CharacterCard} from './CharacterCard';
+import {getGenderLabel} from '@/helpers';
 
 const renderItem = ({item}: ListRenderItemInfo<Character>) => {
-  const gender: Gender = ['n/a', 'unknown', 'none'].includes(item.gender)
-    ? 'other'
-    : (item.gender.toLocaleLowerCase() as Gender);
+  const gender: Gender = getGenderLabel(item.gender);
   return (
     <CharacterCard
       key={item.url}

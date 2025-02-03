@@ -24,6 +24,8 @@ type Props = {
 export function LikeButton({accessibilityLabel, characterUrl, gender}: Props) {
   const scale = useSharedValue(1);
   const isLiked = useSelector(selectIsCharacterLiked(gender, characterUrl));
+  console.log({isLiked, gender});
+
   const dispatch = useDispatch();
   const handleLikePress = () => {
     if (isLiked) {

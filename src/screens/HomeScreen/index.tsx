@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     gap: 16,
-    paddingVertical: 16,
     paddingHorizontal: 24,
   },
   listContainer: {
