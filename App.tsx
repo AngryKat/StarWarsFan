@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {RootStack} from './RootStack';
+import {RootStack} from './src/navigation/RootStack';
 import {store} from './src/store';
 
 export default function App() {

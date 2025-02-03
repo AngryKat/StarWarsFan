@@ -2,9 +2,9 @@ import React from 'react';
 import {Platform, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import {selectFansCount} from '../../store/fansSlice';
-import type {Gender} from '../../utils/types';
-import {AppText, AppCard} from '../../components/ui';
+import {selectFansCount} from '../../../store/fansSlice';
+import type {Gender} from '../../../utils/types';
+import {AppText, AppCard} from '../../../components/ui';
 
 type Props = {
   gender: Gender;

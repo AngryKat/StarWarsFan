@@ -2,9 +2,9 @@ import React, {Suspense} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
-import type {Gender} from '../../types';
-import {FanCountCard} from './HomeScreen/FanCountCard';
-import {CharactersList} from './HomeScreen/CharactersList';
+import type {Gender} from '../../utils/types';
+import {FanCountCard} from './components/FanCountCard';
+import {CharactersList} from './components/CharactersList';
 
 type CardItem = {
   title: string;

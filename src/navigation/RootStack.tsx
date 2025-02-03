@@ -1,9 +1,9 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {HomeScreen, DetailsScreen} from './src/screens';
-import fonts from './src/config/fonts';
-import type {RootStackParamList} from './src/types';
-import {ClearButton} from './src/ui';
+import {HomeScreen, DetailsScreen} from '../screens';
+import fonts from '../config/fonts';
+import type {RootStackParamList} from '../utils/types';
+import {ClearButton} from '../components/ui';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

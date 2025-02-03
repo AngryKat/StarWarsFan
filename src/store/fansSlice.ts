@@ -1,13 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
-import { Gender } from '../types';
-import { RootState } from '.';
-
-export interface FansState {
-  female: { count: number; characterUrls: Record<string, string> };
-  male: { count: number; characterUrls: Record<string, string> };
-  other: { count: number; characterUrls: Record<string, string> };
-}
+import { type PayloadAction } from '@reduxjs/toolkit';
+import { type Gender, type FansState, type RootState } from '../utils/types';
 
 const initialState: FansState = {
   female: { count: 0, characterUrls: {} },

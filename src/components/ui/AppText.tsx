@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, TextProps} from 'react-native';
-import fonts from '../config/fonts';
+import fonts from '../../config/fonts';
 
 type Props = TextProps;
 
