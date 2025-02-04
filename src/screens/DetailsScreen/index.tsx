@@ -1,14 +1,12 @@
 import React, {Suspense} from 'react';
 import {StyleSheet} from 'react-native';
-import {RouteProp} from '@react-navigation/native';
 import {type RootStackParamList} from '@/utils/types';
 import {AppCard} from '@/components/ui';
 import {CharacterDetails} from './components/CharacterDetails';
 import {CharacterDetailsSkeleton} from './components/CharacterDetailsSkeleton';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-type Props = {
-  route: RouteProp<RootStackParamList, 'Details'>;
-};
+type Props = NativeStackScreenProps<RootStackParamList, 'Details'>;
 
 export function DetailsScreen({route}: Props) {
   return (

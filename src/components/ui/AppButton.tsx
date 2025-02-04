@@ -4,12 +4,9 @@ import {AppText} from './AppText';
 
 type Props = {
   children: ReactNode;
-};
+} & PressableProps;
 
-export function AppButton({
-  children,
-  ...pressableProps
-}: Props & PressableProps) {
+export function AppButton({children, ...pressableProps}: Props) {
   return (
     <Pressable
       {...pressableProps}
